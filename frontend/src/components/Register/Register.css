@@ -1,0 +1,101 @@
+.login-page {
+  --background: transparent;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  background: transparent;
+  position: relative;
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.fondo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-container {
+  margin-bottom: 40px; /* Aumentamos el margen inferior del logo */
+  display: flex;
+  justify-content: center;
+}
+
+.app-logo {
+  width: 120px; /* Ajustamos el tamaño del logo */
+  height: auto;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo un poco más transparente */
+  padding: 30px;
+  border-radius: 15px; /* Bordes más redondeados */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+  width: 90%;
+  max-width: 400px;
+  z-index: 1;
+}
+
+.form-container p {
+  color: #555;
+  margin-bottom: 25px; /* Más espacio entre el título y los campos */
+  font-size: 1.1em; /* Tamaño de fuente un poco mayor */
+}
+
+.form-container ion-item {
+  margin-bottom: 30px; /* Más espacio entre los campos */
+}
+
+.form-container ion-item ion-label {
+  position: static !important; /* Evita el comportamiento "floating" inicial */
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
+  display: block; /* Hace que la etiqueta ocupe toda la línea */
+  text-align: left; /* Alinea el texto de la etiqueta a la izquierda */
+}
+
+.form-container ion-item ion-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.login-button {
+  margin-top: 40px;
+  --background: #2d8659;
+  --color: white;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 12px 24px;
+}
+
+.signup-link {
+  margin-top: 30px;
+  color: #777;
+  font-size: 0.9em;
+}
+
+.signup-link a {
+  color: #3880ff;
+  text-decoration: none;
+  font-weight: bold;
+}
