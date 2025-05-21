@@ -19,8 +19,13 @@ import {
     IonLabel,
     IonInput,
 } from '@ionic/react';
+<<<<<<< Updated upstream
 import { addCircle, trendingUp, flame, atOutline } from 'ionicons/icons';
 import { useHistory } from 'react-router-dom'; 
+=======
+import { addCircle, trendingUp, flame } from 'ionicons/icons';
+import { useNavigate } from 'react-router-dom'; // ✅ CORRECTO PARA V6
+>>>>>>> Stashed changes
 import "./Main.css";
 
 const gastosPorCategoria = {
@@ -33,7 +38,11 @@ const gastosPorCategoria = {
 const ingresos = 1000;
 const gastos = Object.values(gastosPorCategoria).reduce((a, b) => a + b, 0);
 const saldo = ingresos - gastos;
+<<<<<<< Updated upstream
 const metaAhorroCantidadSimulada = 500; // Ejemplo de cuánto se quiere ahorrar
+=======
+const metaAhorroCantidadSimulada = 500;
+>>>>>>> Stashed changes
 
 const consejos = [
     "Divide tus gastos fijos y variables.",
@@ -43,16 +52,24 @@ const consejos = [
 ];
 const consejoAleatorio = () => consejos[Math.floor(Math.random() * consejos.length)];
 
+<<<<<<< Updated upstream
 const calcularRachaAhorro = () => {
     return 1; 
 };
+=======
+const calcularRachaAhorro = () => 1;
+>>>>>>> Stashed changes
 
 const Main: React.FC = () => {
     const [rachaAhorro, setRachaAhorro] = useState(0);
     const [consejo, setConsejo] = useState('');
     const [metaAhorroDias, setMetaAhorroDias] = useState<number | null>(null);
     const [metaAhorroCantidad, setMetaAhorroCantidad] = useState<number | null>(null);
+<<<<<<< Updated upstream
     const history = useHistory(); 
+=======
+    const navigate = useNavigate(); // ✅
+>>>>>>> Stashed changes
 
     useEffect(() => {
         setRachaAhorro(calcularRachaAhorro());
@@ -117,7 +134,13 @@ const Main: React.FC = () => {
                             <IonInput
                                 type="number"
                                 value={metaAhorroDias !== null ? metaAhorroDias.toString() : ''}
+<<<<<<< Updated upstream
                                 onIonChange={(e) => setMetaAhorroDias(e.detail.value ? parseInt(e.detail.value, 10) : null)}
+=======
+                                onIonChange={(e) =>
+                                    setMetaAhorroDias(e.detail.value ? parseInt(e.detail.value, 10) : null)
+                                }
+>>>>>>> Stashed changes
                             />
                         </IonItem>
                         <IonItem>
@@ -125,18 +148,35 @@ const Main: React.FC = () => {
                             <IonInput
                                 type="number"
                                 value={metaAhorroCantidad !== null ? metaAhorroCantidad.toString() : ''}
+<<<<<<< Updated upstream
                                 onIonChange={(e) => setMetaAhorroCantidad(e.detail.value ? parseFloat(e.detail.value) : null)}
                             />
                         </IonItem>
                         <IonButton expand="full" onClick={() => {
                             console.log('Meta de ahorro establecida:', metaAhorroDias, metaAhorroCantidad);
                         }}>
+=======
+                                onIonChange={(e) =>
+                                    setMetaAhorroCantidad(e.detail.value ? parseFloat(e.detail.value) : null)
+                                }
+                            />
+                        </IonItem>
+                        <IonButton
+                            expand="full"
+                            onClick={() => {
+                                console.log('Meta de ahorro establecida:', metaAhorroDias, metaAhorroCantidad);
+                            }}
+                        >
+>>>>>>> Stashed changes
                             Guardar Meta
                         </IonButton>
                     </IonCardContent>
                 </IonCard>
 
+<<<<<<< Updated upstream
                 {/* Racha de ahorro */}
+=======
+>>>>>>> Stashed changes
                 <IonCard color="warning">
                     <IonCardHeader>
                         <IonCardTitle>
@@ -160,13 +200,21 @@ const Main: React.FC = () => {
                 <IonGrid>
                     <IonRow>
                         <IonCol>
+<<<<<<< Updated upstream
                             <IonButton expand="block" color="danger" onClick={() => history.push('/gastos')}>
+=======
+                            <IonButton expand="block" color="danger" onClick={() => navigate('/gastos')}>
+>>>>>>> Stashed changes
                                 <IonIcon slot="start" icon={addCircle} />
                                 Ingresar Gasto
                             </IonButton>
                         </IonCol>
                         <IonCol>
+<<<<<<< Updated upstream
                             <IonButton expand="block" color="tertiary" onClick={() => history.push('/ingresos')}>
+=======
+                            <IonButton expand="block" color="tertiary" onClick={() => navigate('/ingresos')}>
+>>>>>>> Stashed changes
                                 <IonIcon slot="start" icon={trendingUp} />
                                 Registrar Ingreso
                             </IonButton>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< Updated upstream
 import {
     IonPage,
     IonContent,
@@ -15,14 +16,27 @@ import { eyeOffOutline, eyeOutline, logoGoogle } from 'ionicons/icons';
 import logo from '../img/Logo.png';
 import './Login.css';
 import { useHistory } from 'react-router-dom';
+=======
+import { IonPage, IonContent, IonInput, IonButton, IonIcon, IonRouterLink, useIonLoading, useIonToast } from '@ionic/react';
+import { eyeOffOutline, eyeOutline, logoGoogle } from 'ionicons/icons';
+import logo from '../img/Logo.png';
+import './Login.css';
+import { useNavigate } from 'react-router-dom';
+>>>>>>> Stashed changes
 
 const Login: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+<<<<<<< Updated upstream
     const history = useHistory();
     const [presentLoading, dismissLoading] = useIonLoading();
     const [presentToast] = useIonToast();
+=======
+    const [presentLoading, dismissLoading] = useIonLoading();
+    const [presentToast] = useIonToast();
+    const navigate = useNavigate(); 
+>>>>>>> Stashed changes
 
     const handleLogin = async () => {
         presentLoading({
@@ -30,7 +44,11 @@ const Login: React.FC = () => {
         });
 
         try {
+<<<<<<< Updated upstream
             const response = await fetch('http://localhost:8080/api/auth/login', { // ⚠️ URL completa con el puerto
+=======
+            const response = await fetch('http://localhost:8080/api/auth/login', {
+>>>>>>> Stashed changes
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -49,7 +67,11 @@ const Login: React.FC = () => {
                     position: 'top',
                     color: 'success',
                 });
+<<<<<<< Updated upstream
                 history.push('../Main/Main.tsx'); // Redirige en caso de éxito
+=======
+                navigate('/main');
+>>>>>>> Stashed changes
             } else {
                 const errorData = await response.json();
                 console.error('Error en el login:', errorData);
@@ -78,7 +100,11 @@ const Login: React.FC = () => {
 
     const handleGoogleSignIn = () => {
         console.log('Google login');
+<<<<<<< Updated upstream
         history.push('/'); 
+=======
+        navigate('/');
+>>>>>>> Stashed changes
     };
 
     return (
@@ -93,7 +119,11 @@ const Login: React.FC = () => {
                     <div className="login-form-section">
                         <div className="form-container">
                             <h2>Bienvenido!!</h2>
+<<<<<<< Updated upstream
                             <br></br>
+=======
+                            <br />
+>>>>>>> Stashed changes
                             <div className="form-group">
                                 <label htmlFor="username">Ingrese su nombre de usuario</label>
                                 <IonInput

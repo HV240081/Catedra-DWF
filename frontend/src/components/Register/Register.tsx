@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+<<<<<<< Updated upstream
 import {
     IonPage,
     IonContent,
@@ -15,15 +16,28 @@ import { eyeOffOutline, eyeOutline, logoGoogle } from 'ionicons/icons';
 import logo from '../img/Logo.png';
 import './Register.css';
 import { useHistory } from 'react-router-dom';
+=======
+import { IonPage, IonContent, IonInput, IonButton, IonIcon, IonRouterLink, useIonLoading, useIonToast } from '@ionic/react';
+import { eyeOffOutline, eyeOutline, logoGoogle } from 'ionicons/icons';
+import logo from '../img/Logo.png';
+import './Register.css';
+import { useNavigate } from 'react-router-dom';
+>>>>>>> Stashed changes
 
 const Register: React.FC = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+<<<<<<< Updated upstream
     const history = useHistory();
     const [presentLoading, dismissLoading] = useIonLoading();
     const [presentToast] = useIonToast();
+=======
+    const [presentLoading, dismissLoading] = useIonLoading();
+    const [presentToast] = useIonToast();
+    const navigate = useNavigate();
+>>>>>>> Stashed changes
 
     const handleRegister = async () => {
         presentLoading({
@@ -31,7 +45,11 @@ const Register: React.FC = () => {
         });
 
         try {
+<<<<<<< Updated upstream
             const response = await fetch('http://localhost:8080/api/auth/register', { 
+=======
+            const response = await fetch('http://localhost:8080/api/auth/register', {
+>>>>>>> Stashed changes
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,7 +68,11 @@ const Register: React.FC = () => {
                     position: 'top',
                     color: 'success',
                 });
+<<<<<<< Updated upstream
                 history.push('/login'); 
+=======
+                navigate('/login');
+>>>>>>> Stashed changes
             } else {
                 const errorData = await response.json();
                 console.error('Error en el registro:', errorData);
@@ -93,7 +115,11 @@ const Register: React.FC = () => {
                     <div className="login-form-section">
                         <div className="form-container">
                             <h2>Register</h2>
+<<<<<<< Updated upstream
                             <br></br>
+=======
+                            <br />
+>>>>>>> Stashed changes
                             <div className="form-group">
                                 <label htmlFor="username">Ingrese su nombre de usuario</label>
                                 <IonInput

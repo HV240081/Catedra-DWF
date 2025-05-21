@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom'; // Importa Redirect
 import {
@@ -6,10 +7,21 @@ import {
     setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+=======
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { IonApp, setupIonicReact } from '@ionic/react';
+
+>>>>>>> Stashed changes
 import SplashScreen from './components/Splashscreen/SplashScreen';
 import LoginPage from './components/Login/Login';
 import Register from './components/Register/Register';
 import Main from './components/Main/Main';
+<<<<<<< Updated upstream
+=======
+import TipsAhorro from './components/Tips/TipsAhorro';
+
+>>>>>>> Stashed changes
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
@@ -32,6 +44,7 @@ const App: React.FC = () => {
         setShowSplash(false);
     };
 
+<<<<<<< Updated upstream
     return (
         <IonApp>
             {showSplash ? (
@@ -54,6 +67,26 @@ const App: React.FC = () => {
             )}
         </IonApp>
     );
+=======
+  return (
+    <IonApp>
+      {showSplash ? (
+        <SplashScreen onTimeout={handleSplashTimeout} />
+      ) : (
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/main" element={<Main />} />
+            <Route path="/tips" element={<TipsAhorro />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Router>
+      )}
+    </IonApp>
+  );
+>>>>>>> Stashed changes
 };
 
 export default App;
