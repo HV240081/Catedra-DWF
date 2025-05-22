@@ -1,0 +1,63 @@
+.ingresos-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+.back {
+  display: inline-block;
+  cursor: pointer;
+  color: #006064;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ingresos-title {
+  text-align: center;
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.grafico-container {
+  background-color: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.panel-clasificacion {
+  background-color: #00796b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ffffff55;
+  padding-bottom: 8px;
+}
+
+.total {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.lista-ingresos {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.item-ingreso {
+  margin-bottom: 12px;
+}
+
+.categoria {
+  font-size: 14px;
+  color: #cfd8dc;
+}
