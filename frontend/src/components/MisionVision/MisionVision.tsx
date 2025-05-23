@@ -1,10 +1,10 @@
 import React from "react";
-import "./MisionVisionValores.css";
+import "./MisionVision.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const MisionVisionValores = () => {
+const MisionVision = () => {
   const navigate = useNavigate();
 
   const contenido = [
@@ -38,4 +38,4 @@ const MisionVisionValores = () => {
   );
 };
 
-export default MisionVisionValores;
+export default MisionVision;
