@@ -20,7 +20,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onTimeout }) => {
   return isVisible ? (
     <div className="splash-screen">
       <img src={logo} alt="Logo de la App" className="app-logo" />
-      <h1>Mi App</h1>
+      <h1>Springtercash</h1>
       <div className="loading-indicator"></div>
     </div>
   ) : null;

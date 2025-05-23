@@ -1,101 +1,149 @@
-.login-page {
-  --background: transparent;
-}
-
-.login-content {
+/* Contenedor principal */
+.login-container {
   display: flex;
-  flex-direction: column;
-  align-items: center; /* Centra horizontalmente */
-  justify-content: center; /* Centra verticalmente */
-  min-height: 100vh;
-  padding: 20px;
-  text-align: center;
-  background: transparent;
-  position: relative;
-}
-
-.background-container {
-  position: absolute;
-  top: 0;
-  left: 0;
+  height: 100vh;
   width: 100%;
-  height: 100%;
-  z-index: -1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.fondo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.logo-container {
-  margin-bottom: 40px; /* Aumentamos el margen inferior del logo */
+.login-form-section {
+  flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #00c853, #00bcd4, #1de9b6, #64ffda);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  padding: 2rem;
 }
 
-.app-logo {
-  width: 120px; /* Ajustamos el tamaño del logo */
-  height: auto;
-  margin-bottom: 20px;
-  z-index: 1;
+
+/* Sección del fondo dinamico */
+.login-banner-section {
+  flex: 1;
+  background: linear-gradient(-45deg, #00c853, #00bcd4, #1de9b6, #64ffda);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
 }
 
-.form-container {
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo un poco más transparente */
-  padding: 30px;
-  border-radius: 15px; /* Bordes más redondeados */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
-  width: 90%;
+/* Animación del fondo degradado */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Formulario */
+.login-form {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 100%;
   max-width: 400px;
-  z-index: 1;
 }
 
-.form-container p {
+/* Animación del texto degradado */
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.springters-text {
+  font-size: 45px;
+  font-weight: bold;
+  background: linear-gradient(-45deg, #00c853, #00bcd4, #1de9b6, #64ffda);
+  background-size: 500% 500%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientBG 10s ease infinite;
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+
+/* Estilos para el contenedor del formulario */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Estilos de los labels del form*/
+.form-group label {
+  display: block; 
+  font-size: 0.9rem;
   color: #555;
-  margin-bottom: 25px; /* Más espacio entre el título y los campos */
-  font-size: 1.1em; /* Tamaño de fuente un poco mayor */
+  margin-bottom: 8px;
+  text-align: left;
 }
 
-.form-container ion-item {
-  margin-bottom: 30px; /* Más espacio entre los campos */
-}
-
-.form-container ion-item ion-label {
-  position: static !important; /* Evita el comportamiento "floating" inicial */
-  font-size: 1em;
-  color: #333;
-  margin-bottom: 5px; /* Espacio entre la etiqueta y el input */
-  display: block; /* Hace que la etiqueta ocupe toda la línea */
-  text-align: left; /* Alinea el texto de la etiqueta a la izquierda */
-}
-
-.form-container ion-item ion-input {
-  padding: 12px;
-  border: 1px solid #ccc;
+ion-input {
+  --padding-start: 10px;
+  --padding-end: 10px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
   border-radius: 8px;
-  font-size: 1em;
+  font-size: 1rem;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+ion-input:focus {
+  border-color: #00bcd4;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 188, 212, 0.25);
+}
+
+ion-icon[slot="end"] {
+  position: absolute; 
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #dcdbdb;
+}
+/* Estilo para los botones */
+.login-button,
+.google-login-button {
+  display: block; 
+  width: 100%;
+  height: 48px; 
+  border-radius: 10px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 48px;
+  transition: transform 0.1s ease-in-out, background-color 0.2s ease;
+  margin-top: 10px;
+  box-sizing: border-box; 
 }
 
 .login-button {
-  margin-top: 40px;
-  --background: #2d8659;
-  --color: white;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 1.1em;
-  padding: 12px 24px;
+  --background: #4CAF50;
+  --background-hover: #43A047;
+  --color: #fff;
+  width: 100%;
+  height: 48px; 
 }
 
-.signup-link {
-  margin-top: 30px;
-  color: #777;
-  font-size: 0.9em;
+.login-button:active {
+  transform: scale(0.95);
 }
 
-.signup-link a {
-  color: #3880ff;
-  text-decoration: none;
-  font-weight: bold;
+.google-login-button {
+  --background: rgba(255, 255, 255, 0.8);
+  --background-hover: rgba(255, 255, 255, 0.9);
+  --color: #333;
+  --border-color: #ccc;
+  --border-width: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-login-button ion-icon {
+  color: #db4437;
+  margin-right: 10px;
+}
+.signup-link{
+  text-align: center;
 }

@@ -1,90 +1,144 @@
 import React, { useState } from 'react';
-import {  IonContent,  IonPage,  IonHeader,  IonToolbar,  IonTitle,  IonItem,  IonLabel,  IonInput, IonButton, IonIcon} from '@ionic/react';
-import { eyeOffOutline, eyeOutline } from 'ionicons/icons';
+import {
+    IonPage,
+    IonContent,
+    IonInput,
+    IonButton,
+    IonIcon,
+    IonRouterLink,
+    useIonLoading,
+    useIonToast
+} from '@ionic/react';
+import { eyeOffOutline, eyeOutline, logoGoogle } from 'ionicons/icons';
+import logo from '../img/Logo.png';
 import './Register.css';
-import fondo from "../img/fondo.png";
-import logo from "../img/Logo.png";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // ✅ reemplaza useHistory
 
 const Register: React.FC = () => {
-  const [username, setUsername] = useState('');
-  const [mail, setMail] = useState('');
-  const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const history = useHistory();
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [presentLoading, dismissLoading] = useIonLoading();
+    const [presentToast] = useIonToast();
+    const navigate = useNavigate(); // ✅ nuevo hook
 
-  const handleLogin = () => {
-    console.log('Iniciar sesión con:', username, password);
-    // Simulación de guardado (localStorage por ahora)
-    const userData = { username, mail, password };
-    localStorage.setItem('user', JSON.stringify(userData));
+    const handleRegister = async () => {
+        presentLoading({
+            message: 'Creando cuenta...',
+        });
 
-    console.log('Usuario registrado:', userData);
+        try {
+            const response = await fetch('http://localhost:8080/api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, email, password }),
+            });
 
-    // Redirigir al login
-    history.push('/');
-  };
+            dismissLoading();
 
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Registro exitoso:', data);
+                presentToast({
+                    message: data.message || 'Cuenta creada exitosamente',
+                    duration: 2000,
+                    position: 'top',
+                    color: 'success',
+                });
+                navigate('/login'); // ✅ cambio aquí
+            } else {
+                const errorData = await response.json();
+                console.error('Error en el registro:', errorData);
+                presentToast({
+                    message: errorData.message || 'Error al crear la cuenta',
+                    duration: 3000,
+                    position: 'top',
+                    color: 'danger',
+                });
+            }
+        } catch (error) {
+            dismissLoading();
+            console.error('Error de conexión:', error);
+            presentToast({
+                message: 'Error al conectar con el servidor',
+                duration: 3000,
+                position: 'top',
+                color: 'danger',
+            });
+        }
+    };
 
-  return (
-    <IonPage className="login-page">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Bienvenido</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent className="login-content">
-        <div className="background-container">
-          <img src={fondo} alt="fondo" className="fondo" />
-        </div>
-        <div className="form-container">
-        <img src={logo} alt="Logo de la App" className="app-logo" />
-          <p>Ingrese  un nombre de usuario</p>
-          <IonItem>
-            <IonLabel position="floating">Username</IonLabel>
-            <IonInput
-              type="text"
-              value={username}
-              onIonChange={(e) => setUsername(e.detail.value!)}
-            />
-          </IonItem>
-          <p>Ingrese su correo electrónico</p>
-          <IonItem>
-            <IonLabel position="floating">Username</IonLabel>
-            <IonInput
-              type="email"
-              value={mail}
-              onIonChange={(e) => setMail(e.detail.value!)} //El setMail es para que el correo se guarde mejor y correcto. Por eso lo cambie en las pruebas que estaba haciendo :) 
-            />
-          </IonItem>
-          <p>Ingrese su contraseña</p>
-          <IonItem>
-            <IonLabel position="floating">Password</IonLabel>
-            <IonInput
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onIonChange={(e) => setPassword(e.detail.value!)}
-            />
-            <IonIcon
-              slot="end"
-              onClick={togglePasswordVisibility}
-              style={{ cursor: 'pointer' }}
-            />
-          </IonItem>
-          <IonButton expand="block" onClick={handleLogin} className="login-button">
-            Ingresar
-          </IonButton>
-          <p className="signup-link">
-            ¿Ya tienes una cuenta?
-            <IonButton fill="clear" onClick={() => history.push('/')}>Inicia sesión</IonButton>
-          </p>
-        </div>
-      </IonContent>
-    </IonPage>
-  );
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleGoogleSignIn = () => {
+        console.log('Google login');
+    };
+
+    return (
+        <IonPage>
+            <IonContent fullscreen className="login-content">
+                <div className="login-container">
+                    <div className="logo-section">
+                        <img src={logo} alt="Logo Springters" className="springters-logo" />
+                        <h1 className="springters-text">SpringterCash</h1>
+                    </div>
+
+                    <div className="login-form-section">
+                        <div className="form-container">
+                            <h2>Register</h2>
+                            <br />
+                            <div className="form-group">
+                                <label htmlFor="username">Ingrese su nombre de usuario</label>
+                                <IonInput
+                                    id="username"
+                                    type="text"
+                                    value={username}
+                                    onIonChange={(e) => setUsername(e.detail.value!)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="email">Ingrese su correo electrónico</label>
+                                <IonInput
+                                    id="email"
+                                    type="email"
+                                    value={email}
+                                    onIonChange={(e) => setEmail(e.detail.value!)}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Ingrese su contraseña</label>
+                                <IonInput
+                                    id="password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onIonChange={(e) => setPassword(e.detail.value!)}
+                                />
+                                <IonIcon
+                                    slot="end"
+                                    icon={showPassword ? eyeOutline : eyeOffOutline}
+                                    onClick={togglePasswordVisibility}
+                                    style={{ cursor: 'pointer' }}
+                                />
+                            </div>
+
+                            <IonButton expand="block" onClick={handleRegister} className="login-button">
+                                Crear Cuenta
+                            </IonButton>
+
+                            <p className="signup-link">
+                                ¿Ya tienes una cuenta? <IonRouterLink routerLink="/login">Ingresa aquí</IonRouterLink>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </IonContent>
+        </IonPage>
+    );
 };
 
 export default Register;

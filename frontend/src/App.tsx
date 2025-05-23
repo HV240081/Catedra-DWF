@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect, Route } from 'react-router-dom';
-import {
-  IonApp,
-  IonRouterOutlet,
-  setupIonicReact
-} from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import SplashScreen from '../src/components/Splashscreen/SplashScreen'; // Asegúrate de que la ruta sea correcta
-import LoginPage from '../src/components/Login/Login'; // Importa el componente LoginPage
-import RegisterPage from '../src/components/Register/Register';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { IonApp, setupIonicReact } from '@ionic/react';
 
-/* Core CSS required for Ionic components to work properly */
+import SplashScreen from './components/Splashscreen/SplashScreen';
+import LoginPage from './components/Login/Login';
+import Register from './components/Register/Register';
+import TipsAhorro from './components/Tips/TipsAhorro';
+import IngresosForm from './components/Ingresos/IngresosForm';
+import Ingresos from './components/Ingresos/Ingresos';
+import MisionVision from './components/MisionVision/MisionVision';
+
 import '@ionic/react/css/core.css';
 import '@ionic/react/css/normalize.css';
 import '@ionic/react/css/structure.css';
@@ -37,38 +36,18 @@ const App: React.FC = () => {
       {showSplash ? (
         <SplashScreen onTimeout={handleSplashTimeout} />
       ) : (
-        <IonReactRouter>
-          <IonRouterOutlet id="main">
-            <Route exact path="/">
-              <LoginPage /> {/* LoginPage como la ruta principal */}
-            </Route>
-            {/* Si aún necesitas las otras pestañas en otras rutas, defínelas aquí */}
-            {/* <Route path="/tabs/tab2" component={Tab2} />
-            <Route path="/tabs/tab3" component={Tab3} />
-            <Route path="/tabs" render={() => <Redirect to="/tabs/tab1" />} />
-            <Route path="/tabs/tab1" component={Tab1} /> */}
-              <Route exact path="/register">
-                <RegisterPage />
-              </Route>
-          </IonRouterOutlet>
-          {/* Si ya no necesitas la barra de pestañas inicialmente, puedes comentarla o eliminarla */}
-          {/* <IonTabs>
-            <IonTabBar slot="bottom">
-              <IonTabButton tab="tab1" href="/tabs/tab1">
-                <IonIcon aria-hidden="true" icon={triangle} />
-                <IonLabel>Iniciar Sesión</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab2" href="/tabs/tab2">
-                <IonIcon aria-hidden="true" icon={ellipse} />
-                <IonLabel>Tab 2</IonLabel>
-              </IonTabButton>
-              <IonTabButton tab="tab3" href="/tabs/tab3">
-                <IonIcon aria-hidden="true" icon={square} />
-                <IonLabel>Tab 3</IonLabel>
-              </IonTabButton>
-            </IonTabBar>
-          </IonTabs> */}
-        </IonReactRouter>
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/tips" element={<TipsAhorro />} />
+            <Route path="/ingresosform" element={<IngresosForm />} />
+            <Route path="/ingresos" element={<Ingresos />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/misionvision" element={<MisionVision />} />
+          </Routes>
+        </Router>
       )}
     </IonApp>
   );
