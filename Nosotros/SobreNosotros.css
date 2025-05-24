@@ -1,8 +1,13 @@
 .sn-container {
   padding: 20px;
   width: 80%;
-
+overflow-y: scroll;
+    scrollbar-width: none;
   margin: auto;
+}
+
+.sn-container::-webkit-scrollbar {
+    display: none;
 }
 
 .sn-header {
@@ -106,28 +111,39 @@
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 20px;
-  height: 60%;
-  background-color: white;
+  margin-top: 40px;
+  justify-items: center;
 }
 
 .card {
-  background-color: #007d8a;
-  border-radius: 6px;
-  overflow: hidden;
+  background-color: #1e1e1e;
+  padding: 5px;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
   text-align: center;
-  color: white;
+  transition: transform 0.3s ease;
+  width: 100%;
+  max-width: 220px;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card-image {
   width: 100%;
-  height: 120px;
+  height: 140px;
   object-fit: cover;
+  border-radius: 12px;
 }
 
 .card-name {
-  padding: 10px 0;
-  font-size: 14px;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #00c853;
 }
+
+
+
