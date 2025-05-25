@@ -5,7 +5,7 @@ import "./Bienvenida.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import fondo form "../img/Fondo inicio.jpg";
+import fondo from "../img/Fondo inicio.jpg";
 
 const SpringterCash = () => {
   const navigate = useNavigate();
