@@ -1,0 +1,36 @@
+.panel-clasificacion {
+  width: 100%;
+  max-width: 1000px; /* Aumentamos para que quepan 2 columnas */
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #00796b;
+  border-radius: 10px;
+  color: white;
+  overflow-x: hidden;
+}
+
+.doble-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.panel-column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 48%;
+  background-color: #006064;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+/* Asegura que todo el contenido pueda desplazarse verticalmente */
+.page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* permite hacer scroll si hay muchos datos */
+}
