@@ -5,6 +5,7 @@ import "./Bienvenida.css";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import fondo form "../img/Fondo inicio.jpg";
 
 const SpringterCash = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const SpringterCash = () => {
 
       <header className="header">
         <div className="logo">
-          <img src="../img/FondoInicio.jpg" alt="SpringterCash Logo" />
+          <img src={fondo} alt="SpringterCash Logo" />
           <h1>SpringterCash</h1>
         </div>
         
